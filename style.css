@@ -1,0 +1,20 @@
+/* GLOBAL RESET SET UP */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%; /* 1rem =10px => 10/16=o.625 *100 =>62.5% */
+}
+
+/* GLOBAL SETTING*/
+body {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+}
