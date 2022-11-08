@@ -17,13 +17,20 @@
     <main class="container">
       <h1 class="heading-primary">Find a dog</h1>
       <section class="search-content">
-        <input type="search" class="search__input" />
+        <input
+          type="search"
+          class="search__input"
+          placeholder="Type a dog breed..."
+        />
         <button class="search__button">Search</button>
       </section>
       <section class="result-content">
-        <div class="result"></div>
+        <ul>
+          <li class="result">&nbsp</li>
+        </ul>
       </section>
     </main>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
     <script src="script.js"></script>
   </body>
 </html>
