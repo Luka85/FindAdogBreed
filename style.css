@@ -1,8 +1,12 @@
 :root {
   --color-primary: #fff;
-  --background-color: #345;
-}
 
+  --color-secondary: #163549;
+  --color--notification: #e26d5c;
+  --background-color1: #163549;
+  --background-color2: #80ed99;
+  --color-button: #2d89d4;
+}
 /* GLOBAL RESET SET UP */
 *,
 *::before,
