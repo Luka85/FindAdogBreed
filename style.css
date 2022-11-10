@@ -22,6 +22,113 @@ body {
   font-family: "Roboto", sans-serif;
   font-weight: 400;
   line-height: 1.6;
-  background-color: var(--background-color);
+  background: linear-gradient(90deg, var(--background-color1) 0%, #80ed99 150%);
   color: var(--color-primary);
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  width: 70%;
+  background-color: var(--color-secondary);
+  border-radius: 1rem;
+  padding: 3rem 5rem;
+  box-shadow: 0px 0px 30px 0px rgba(37, 89, 124, 0.671);
+}
+
+.heading-primary {
+  font-size: 4rem;
+  font-weight: 200;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.search-content {
+  font-size: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 3px solid var(--color-button);
+  display: flex;
+  align-items: center;
+  /* margin-bottom: 2rem; */
+}
+
+.search__input {
+  font-family: inherit;
+  font-size: 1.3rem;
+  font-weight: 300;
+  border-radius: 0.5rem;
+  border: none;
+  width: 50%;
+  padding: 1rem 1.3rem 0.8rem 1rem;
+  background-color: #2d89d42c;
+  color: inherit;
+}
+
+.search__input:focus {
+  outline: none;
+  border-bottom: 0.3rem solid var(--color-button);
+}
+
+::placeholder {
+  font-size: 1.3rem;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.534);
+}
+
+.search__button {
+  position: relative;
+  right: 5.5rem;
+  font-size: 1.5rem;
+  background-color: var(--color-button);
+  padding: 0 2rem;
+  border-radius: 0 0.5rem 0.5rem 0;
+  border: none;
+
+  display: flex;
+  align-self: stretch;
+  align-items: center;
+}
+
+.search__button:active,
+.search__button:hover {
+  cursor: pointer;
+  background-color: #2d89d4c5;
+}
+.search__button:active {
+  background-color: var(--color-button);
+}
+
+.search__icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  fill: var(--color-primary);
+}
+
+.result-content {
+  max-height: 50vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  margin-bottom: 1rem;
+}
+
+ul {
+  list-style-type: none;
+  font-size: 1.2rem;
+  font-weight: 300;
+}
+
+li {
+  padding: 1rem 2rem;
+}
+
+/* li:not(:last-child) {
+  margin-bottom: 1rem;
+} */
+
+li:nth-of-type(odd) {
+  background-color: #2d89d42c;
 }
