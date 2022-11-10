@@ -1,12 +1,12 @@
 :root {
   --color-primary: #fff;
-
   --color-secondary: #163549;
   --color--notification: #e26d5c;
   --background-color1: #163549;
   --background-color2: #80ed99;
   --color-button: #2d89d4;
 }
+
 /* GLOBAL RESET SET UP */
 *,
 *::before,
@@ -18,7 +18,7 @@
 
 html {
   box-sizing: border-box;
-  font-size: 62.5%; /* 1rem =10px => 10/16=o.625 *100 =>62.5% */
+  font-size: 62.5%; /* 1rem =10px => 10/16=.625 *100 =>62.5% */
 }
 
 /* GLOBAL SETTING*/
@@ -33,6 +33,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+
 }
 
 .container {
