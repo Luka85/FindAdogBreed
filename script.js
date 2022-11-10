@@ -67,3 +67,10 @@ const findBreed = async () => {
 };
 
 searchButton.addEventListener("click", findBreed);
+
+//TRIGGER BUTTON CLICK ON THE ENTER KEY IN SEARCH INPUT
+searchInput.addEventListener("keydown", function (event) {
+  if (event.key === "Enter") {
+    findBreed();
+  }
+});

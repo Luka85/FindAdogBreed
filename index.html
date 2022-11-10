@@ -15,14 +15,18 @@
   </head>
   <body>
     <main class="container">
-      <h1 class="heading-primary">Find a dog</h1>
+      <h1 class="heading-primary">Dog Breed Finder</h1>
       <section class="search-content">
         <input
           type="search"
           class="search__input"
           placeholder="Type a dog breed..."
         />
-        <button class="search__button">Search</button>
+        <button class="search__button">
+          <svg class="search__icon">
+            <use xlink:href="sprite.svg#icon-search"></use>
+          </svg>
+        </button>
       </section>
       <section class="result-content">
         <ul></ul>
