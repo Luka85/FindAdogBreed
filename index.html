@@ -17,18 +17,29 @@
     <main class="container">
       <h1 class="heading-primary">Dog Breed Finder</h1>
       <section class="search-content">
-        <input
-          type="search"
-          class="search__input"
-          placeholder="Type a dog breed..."
-        />
-        <button class="search__button">
-          <svg class="search__icon">
-            <use xlink:href="sprite.svg#icon-search"></use>
+        <div class="search__input-container">
+          <input
+            type="search"
+            class="search__input"
+            placeholder="Type a dog breed..."
+          />
+          <button class="search__button">
+            <svg class="search__icon">
+              <use xlink:href="sprite.svg#icon-search"></use>
+            </svg>
+          </button>
+        </div>
+
+        <button class="search__button-clear-all">
+          <svg class="clear__icon">
+            <use xlink:href="sprite.svg#icon-clear"></use>
           </svg>
         </button>
       </section>
       <section class="result-content">
+        <div class="result__heading">
+          <h3 class="heading-tertiary">Breed Name</h3>
+        </div>
         <ul></ul>
       </section>
     </main>
