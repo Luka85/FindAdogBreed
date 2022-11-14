@@ -21,7 +21,13 @@ const getBreedData = async () => {
     for (let i = 0; i < breedsData.length; i++) {
       newLi = document.createElement("li");
       newLi.classList.add("result");
-      newLi.innerHTML = `<div class ="result__breedLink">${breedsData[i].name}</div><img class="hidden" src="${breedsData[i].image.url}" alt="Image of the ${breedsData[i].name}">`;
+      newLi.innerHTML = `<div class="result__num">${
+        i + 1
+      }</div><div class ="result__breedLink">${
+        breedsData[i].name
+      }</div><img class="hidden" src="${
+        breedsData[i].image.url
+      }" alt="Image of the ${breedsData[i].name}">`;
       resultData.append(newLi);
       breedImages = document.querySelectorAll(".hidden");
       newLi.addEventListener("click", function () {
@@ -53,7 +59,13 @@ const findBreed = async () => {
       notification.style.display = "none";
       newLi = document.createElement("li");
       newLi.classList.add("result");
-      newLi.innerHTML = `<div class ="result__breedLink">${breedsData[i].name}</div><img class="hidden" src="https://cdn2.thedogapi.com/images/${breedsData[i].reference_image_id}.jpg" alt="Image of the ${breedsData[i].name}">`;
+      newLi.innerHTML = `<div class="result__num">${
+        i + 1
+      }</div><div class ="result__breedLink">${
+        breedsData[i].name
+      }</div><img class="hidden" src="https://cdn2.thedogapi.com/images/${
+        breedsData[i].reference_image_id
+      }.jpg" alt="Image of the ${breedsData[i].name}">`;
       resultData.append(newLi);
       searchInput.focus();
       breedImages = document.querySelectorAll(".hidden");
