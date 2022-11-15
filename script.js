@@ -4,22 +4,23 @@ const searchInput = document.querySelector(".search__input");
 const searchButton = document.querySelector(".search__button");
 const clearButton = document.querySelector(".search__button-clear-all");
 const resultData = document.querySelector("ul");
+
 let notification = document.createElement("li");
 let newLi = document.createElement("li");
 let breedsData;
 let resolve;
-
+let allLi;
 let breedImages = document.querySelectorAll(".hidden");
-newLi.addEventListener("click", function () {
-  breedImages[i].classList.toggle("result__breedImage");
-});
+searchInput.focus();
 const getBreedData = async () => {
   try {
     resolve = await axios.get(`https://api.thedogapi.com/v1/breeds/`);
     breedsData = resolve.data;
-    console.log(breedsData);
+    // console.log(breedsData);
+
     for (let i = 0; i < breedsData.length; i++) {
       newLi = document.createElement("li");
+      allLi = document.querySelectorAll("li");
       newLi.classList.add("result");
       newLi.innerHTML = `<div class="result__num">${
         i + 1
@@ -29,10 +30,10 @@ const getBreedData = async () => {
         breedsData[i].image.url
       }" alt="Image of the ${breedsData[i].name}">`;
       resultData.append(newLi);
-      breedImages = document.querySelectorAll(".hidden");
-      newLi.addEventListener("click", function () {
-        breedImages[i].classList.toggle("result__breedImage");
-      });
+    }
+
+    for (let i = 0; i < allLi.length; i++) {
+      allLi[i].addEventListener("click", toggleImage);
     }
   } catch (error) {
     notification = document.createElement("li");
@@ -42,6 +43,15 @@ const getBreedData = async () => {
     resultData.append(notification);
   }
 };
+
+//TOGGLE IMAGES, IF A USER CLICK ON li, IT SHOWS THE IMAGE, iF A USER CLICKS ANOTHER li, THE LAST ONE CHOSEN li HIDE THE IMAGE
+const toggleImage = function () {
+  for (let i = 0; i < allLi.length; i++) {
+    allLi[i].lastElementChild.classList.remove("result__breedImage");
+  }
+  this.lastElementChild.classList.add("result__breedImage");
+};
+
 //FETCH THE DATA FROM THE API ON WINDOW LOAD WITH THE getBreedData FUNCTION
 window.addEventListener("load", getBreedData);
 
@@ -50,14 +60,17 @@ const findBreed = async () => {
   resultData.innerHTML = "";
   notification = document.createElement("li");
   newLi = document.createElement("li");
+
   try {
     resolve = await axios.get(
       `https://api.thedogapi.com/v1/breeds/search?q=${searchInput.value}`
     );
     breedsData = resolve.data;
+
     for (let i = 0; i < breedsData.length; i++) {
       notification.style.display = "none";
       newLi = document.createElement("li");
+
       newLi.classList.add("result");
       newLi.innerHTML = `<div class="result__num">${
         i + 1
@@ -67,15 +80,20 @@ const findBreed = async () => {
         breedsData[i].reference_image_id
       }.jpg" alt="Image of the ${breedsData[i].name}">`;
       resultData.append(newLi);
+      allLi = document.querySelectorAll("li");
+
       searchInput.focus();
-      breedImages = document.querySelectorAll(".hidden");
-      newLi.addEventListener("click", function () {
-        breedImages[i].classList.toggle("result__breedImage");
-      });
+      // breedImages = document.querySelectorAll(".hidden");
+      for (let i = 0; i < allLi.length; i++) {
+        allLi[i].addEventListener("click", toggleImage);
+        console.log(allLi[i]);
+      }
     }
+
     if (breedsData.length === 0) {
       searchInput.value = "";
     }
+
     notification.classList.add("notification");
     notification.textContent = "Nothing found. Please try again";
     resultData.append(notification);
@@ -101,8 +119,6 @@ searchInput.addEventListener("keydown", function (event) {
     findBreed();
   }
 });
-
-console.log("https://api.thecatapi.com/v1/breeds/search?q=air");
 
 //CLEAR THE RESULT DATA
 clearButton.addEventListener("click", function () {
