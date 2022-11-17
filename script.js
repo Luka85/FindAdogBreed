@@ -11,6 +11,7 @@ let breedsData;
 let resolve;
 let allLi;
 let breedImages = document.querySelectorAll(".hidden");
+
 searchInput.focus();
 const getBreedData = async () => {
   try {
@@ -30,10 +31,8 @@ const getBreedData = async () => {
         breedsData[i].image.url
       }" alt="Image of the ${breedsData[i].name}">`;
       resultData.append(newLi);
-    }
 
-    for (let i = 0; i < allLi.length; i++) {
-      allLi[i].addEventListener("click", toggleImage);
+      newLi.addEventListener("click", toggleImage);
     }
   } catch (error) {
     notification = document.createElement("li");
@@ -45,11 +44,17 @@ const getBreedData = async () => {
 };
 
 //TOGGLE IMAGES, IF A USER CLICK ON li, IT SHOWS THE IMAGE, iF A USER CLICKS ANOTHER li, THE LAST ONE CHOSEN li HIDE THE IMAGE
-const toggleImage = function () {
-  for (let i = 0; i < allLi.length; i++) {
-    allLi[i].lastElementChild.classList.remove("result__breedImage");
+//!
+const toggleImage = function (e) {
+  if (e.currentTarget.lastElementChild.classList.contains("show-image")) {
+    e.currentTarget.lastElementChild.classList.remove("show-image");
+  } else {
+    for (let i = 0; i < allLi.length; i++) {
+      console.log(allLi[i]);
+      allLi[i].lastElementChild.classList.remove("show-image");
+    }
+    e.currentTarget.lastElementChild.classList.add("show-image");
   }
-  this.lastElementChild.classList.add("result__breedImage");
 };
 
 //FETCH THE DATA FROM THE API ON WINDOW LOAD WITH THE getBreedData FUNCTION
@@ -83,11 +88,7 @@ const findBreed = async () => {
       allLi = document.querySelectorAll("li");
 
       searchInput.focus();
-      // breedImages = document.querySelectorAll(".hidden");
-      for (let i = 0; i < allLi.length; i++) {
-        allLi[i].addEventListener("click", toggleImage);
-        console.log(allLi[i]);
-      }
+      newLi.addEventListener("click", toggleImage);
     }
 
     if (breedsData.length === 0) {
