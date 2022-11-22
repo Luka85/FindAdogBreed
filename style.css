@@ -221,3 +221,8 @@ li:hover {
   box-shadow: 0px 0px 20px 0px rgba(18, 43, 59, 0.932);
   justify-items: flex-start;
 }
+
+.alert {
+  margin-left: 1rem;
+  margin-bottom: 0.5rem;
+}

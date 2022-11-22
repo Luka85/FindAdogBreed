@@ -9,11 +9,12 @@ let breedsData;
 let resolve;
 let allLi;
 
-import { searchInput } from "./search.js";
+import { searchInput, alert } from "./search.js";
 
 searchInput.focus();
 
 export const getBreedData = async () => {
+  // alert.textContent = "";
   try {
     resolve = await axios.get(`https://api.thedogapi.com/v1/breeds/`);
     breedsData = resolve.data;

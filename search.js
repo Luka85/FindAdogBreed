@@ -2,6 +2,7 @@
 export const searchInput = document.querySelector(".search__input");
 export const searchButton = document.querySelector(".search__button");
 const searchContent = document.querySelector(".search-content");
+export const alert = document.createElement("div");
 let notification;
 let newLi;
 let breedsData;
@@ -26,7 +27,13 @@ export const findBreed = async () => {
     if (searchInput.value === "" || searchInput.value === " ") {
       getBreedData();
       searchInput.value = "";
+      alert.style.display = "block";
+      alert.classList.add("alert");
+      alert.textContent = "The input field can't be empty or blank! Try again.";
+      searchContent.insertAdjacentElement("beforebegin", alert);
+      console.log("PRAZNOO");
     } else {
+      alert.style.display = "none";
       searchInput.focus();
       notification.classList.add("notification");
       notification.textContent = "Nothing found. Please try again";
