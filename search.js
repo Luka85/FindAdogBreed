@@ -1,13 +1,14 @@
 //*SELECTING ELEMENTS
 export const searchInput = document.querySelector(".search__input");
-const searchButton = document.querySelector(".search__button");
+export const searchButton = document.querySelector(".search__button");
+const searchContent = document.querySelector(".search-content");
 let notification;
 let newLi;
 let breedsData;
 let resolve;
 let allLi;
 
-import { resultData, catchError, toggleImage } from "./script.js";
+import { resultData, catchError, toggleImage, getBreedData } from "./script.js";
 
 //*FETCH THE DATA BASED ON INPUT SEARCH AND INPUT VALIDATION
 export const findBreed = async () => {
@@ -22,14 +23,15 @@ export const findBreed = async () => {
     breedsData = resolve.data;
 
     showSearchResult();
-
-    if (breedsData.length === 0) {
+    if (searchInput.value === "" || searchInput.value === " ") {
+      getBreedData();
       searchInput.value = "";
+    } else {
+      searchInput.focus();
+      notification.classList.add("notification");
+      notification.textContent = "Nothing found. Please try again";
+      resultData.append(notification);
     }
-    notification.classList.add("notification");
-    notification.textContent = "Nothing found. Please try again";
-    resultData.append(notification);
-    searchInput.focus();
   } catch (error) {
     catchError();
     console.log(error);
@@ -38,6 +40,7 @@ export const findBreed = async () => {
 
 // //*SHOW THE INPUT BREED SEARCH RESULTS TO NEW LI'S
 const showSearchResult = function () {
+  console.log(searchInput.value, searchInput.value.length);
   for (let i = 0; i < breedsData.length; i++) {
     notification.style.display = "none";
     newLi = document.createElement("li");
@@ -58,12 +61,13 @@ const showSearchResult = function () {
   }
 };
 
-//*BREED SEARCH ON A SEARCH BUTTON CLICK EVENT
-searchButton.addEventListener("click", findBreed);
-
 //*TRIGGER SEARCH BUTTON CLICK ON THE ENTER KEYDOWN EVENT IN SEARCH INPUT
+
 searchInput.addEventListener("keydown", function (event) {
   if (event.key === "Enter") {
     findBreed();
   }
 });
+
+//*BREED SEARCH ON A SEARCH BUTTON CLICK EVENT
+searchButton.addEventListener("click", findBreed);
