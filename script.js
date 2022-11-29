@@ -1,8 +1,9 @@
 "use strict";
 
-import { fetchBreedData, showAllData } from "./fetchData.js";
+import { showAllData, resultFetchBreed } from "./fetchData.js";
 import { toggleImage } from "./toggleImage.js";
 import { searchBreed } from "./search.js";
+import { clearData } from "./clearData.js";
 
 console.log("script");
 //*SELECTING ELEMENTS
@@ -12,15 +13,14 @@ export const searchInput = document.querySelector(".search__input");
 const searchButton = document.querySelector(".search__button");
 const clearButton = document.querySelector(".search__button-clear-all");
 
-//*FETCH THE DATA FROM THE API ON WINDOW LOAD WITH THE fetchBreedData FUNCTION
-window.addEventListener("load", fetchBreedData(resultDataUl));
+//*FOCUS ON SEARCH INPUT
+export const inputFocus = function (searchInput) {
+  searchInput.focus();
+};
 
-searchInput.focus();
-
-const resultFetchBreed = await fetchBreedData();
-console.log(resultFetchBreed);
-
+inputFocus(searchInput);
 //*ON WINDOW LOAD DISPLAY ALL THE DATA FROM THE showAllData FUNCTION
+
 window.addEventListener("load", showAllData(resultFetchBreed, resultDataUl));
 
 // const allLi = document.querySelectorAll(".result");
@@ -38,3 +38,5 @@ searchInput.addEventListener("keydown", function (event) {
     searchBreed();
   }
 });
+
+clearButton.addEventListener("click", clearData);

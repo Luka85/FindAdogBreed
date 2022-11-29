@@ -1,5 +1,6 @@
 console.log("search");
-import { catchError } from "./fetchData.js";
+import { catchError, showAllData, resultFetchBreed } from "./fetchData.js";
+import { inputFocus } from "./script.js";
 
 // //*FETCH THE DATA BASED ON INPUT SEARCH AND INPUT VALIDATION and DISPLAY ALL THE RESULTS
 
@@ -17,12 +18,24 @@ export const searchBreed = async (searchInput, resultDataUl, notification) => {
     console.log(breedsData);
     // return breedsData;
     resultDataUl.innerHTML = "";
-    if (breedsData.length === 0) {
-      searchInput.value = "";
-      searchInput.focus();
-      console.log("NULA");
-    }
+    // if (breedsData.length === 0) {
+    //   searchInput.value = "";
+    //   searchInput.focus();
+    //   console.log("NULA");
+    //   showAllData(resultFetchBreed, resultDataUl);
+    // }
 
+    if (
+      searchInput.value.length === 0 ||
+      searchInput.value === " " ||
+      searchInput.value[0] <= 9
+    ) {
+      console.log("EMPTY");
+      showAllData(resultFetchBreed, resultDataUl);
+      searchInput.value = "";
+      inputFocus(searchInput);
+    }
+    // showAllData(resultFetchBreed, resultDataUl);
     for (let i = 0; i < breedsData.length; i++) {
       notification.style.display = "none";
       const newLi = document.createElement("li");
@@ -36,12 +49,13 @@ export const searchBreed = async (searchInput, resultDataUl, notification) => {
       }.jpg" alt="Image of the ${breedsData[i].name}">`;
 
       resultDataUl.append(newLi);
+      inputFocus(searchInput);
     }
 
     notification.classList.add("notification");
     notification.textContent = "Nothing found. Please try again";
     resultDataUl.append(notification);
-    searchInput.focus();
+    inputFocus(searchInput);
   } catch (error) {
     catchError();
     console.log(error);

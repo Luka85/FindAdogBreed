@@ -1,4 +1,5 @@
 console.log("fetch");
+import { inputFocus } from "./script.js";
 
 //*FETCH THE BREED DATA FROM THE API
 export const fetchBreedData = async (resultDataUl) => {
@@ -20,12 +21,17 @@ export const catchError = function (resultDataUl, notification, searchInput) {
   notification.textContent =
     " Not found. Something went wrong. Please try again later";
   resultDataUl.append(notification);
-  searchInput.focus();
+  inputFocus(searchInput);
 };
+
+export const resultFetchBreed = await fetchBreedData();
+
+console.log(resultFetchBreed);
 
 //*CREATE AND DISPLAY li WITH THE FETCH DATA FROM resultFetchBreed
 export const showAllData = function (resultFetchBreed, resultDataUl) {
   resultDataUl.innerHTML = "";
+
   for (let i = 0; i < resultFetchBreed.length; i++) {
     const newLi = document.createElement("li");
     newLi.classList.add("result");
