@@ -1,33 +1,42 @@
 console.log("fetch");
 
-export const fetchBreedData = async (resultData) => {
+//*FETCH THE BREED DATA FROM THE API
+export const fetchBreedData = async (resultDataUl) => {
   try {
     const resolve = await axios.get(`https://api.thedogapi.com/v1/breeds/`);
-    // console.log(resolve.data);
     return resolve.data;
   } catch (error) {
-    const notification = document.createElement("li");
-    notification.append(
-      " Not found. Something went wrong. Please try again later"
-    );
-    resultData.append(notification);
+    catchError(resultDataUl);
+    console.log(error);
   }
 };
 
-// //*GET THE VALUE FROM fetchBreedData FUNCTION
-export const showAllData = function (fetchResult, resultData) {
-  resultData.innerHTML = "";
-  // const liArray = [];
-  for (let i = 0; i < fetchResult.length; i++) {
+export const catchError = function (resultDataUl, notification, searchInput) {
+  searchInput = document.querySelector(".search__input");
+  resultDataUl = document.querySelector("ul");
+  resultDataUl.innerHTML = "";
+  notification = document.createElement("li");
+  notification.classList.add("notification");
+  notification.textContent =
+    " Not found. Something went wrong. Please try again later";
+  resultDataUl.append(notification);
+  searchInput.focus();
+};
+
+//*CREATE AND DISPLAY li WITH THE FETCH DATA FROM resultFetchBreed
+export const showAllData = function (resultFetchBreed, resultDataUl) {
+  resultDataUl.innerHTML = "";
+  for (let i = 0; i < resultFetchBreed.length; i++) {
     const newLi = document.createElement("li");
     newLi.classList.add("result");
     newLi.innerHTML = `<div class="result__num">${
       i + 1
     }</div><div class ="result__breedLink">${
-      fetchResult[i].name
+      resultFetchBreed[i].name
     }</div><img class="hidden" src="${
-      fetchResult[i].image.url
-    }" alt="Image of the ${fetchResult[i].name}">`;
-    resultData.append(newLi);
+      resultFetchBreed[i].image.url
+    }" alt="Image of the ${resultFetchBreed[i].name}">`;
+
+    resultDataUl.append(newLi);
   }
 };
