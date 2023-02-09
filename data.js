@@ -1,17 +1,16 @@
-console.log("fetch");
-import { inputFocus, searchInput } from "./script.js";
-
+import { inputFocus } from "./script.js";
+console.log("data");
 //*FETCH THE BREED DATA FROM THE API
 export const fetchBreedData = async (
   resultDataUl,
   notification,
-  inputFocus
+  searchInput
 ) => {
   try {
     const resolve = await axios.get(`https://api.thedogapi.com/v1/breeds/`);
     return resolve.data;
   } catch (error) {
-    catchError(resultDataUl, notification, inputFocus);
+    catchError(resultDataUl, notification, searchInput);
   }
 };
 
@@ -30,6 +29,7 @@ export const showAllData = function (resultFetchBreed, resultDataUl, newLi) {
   resultDataUl.innerHTML = "";
   if (resultFetchBreed === undefined) {
   } else {
+    addDataToHtml(resultFetchBreed, newLi, resultDataUl);
     for (let i = 0; i < resultFetchBreed.length; i++) {
       newLi = document.createElement("li");
       newLi.classList.add("result");
@@ -40,13 +40,12 @@ export const showAllData = function (resultFetchBreed, resultDataUl, newLi) {
       }</div><img class="hidden" src="${
         resultFetchBreed[i].image.url
       }" alt="Image of the ${resultFetchBreed[i].name}">`;
-
       resultDataUl.append(newLi);
     }
   }
 };
 
-export const clearData = function (searchInput, inputFocus) {
-  inputFocus(searchInput);
+export const clearData = function (searchInput) {
+  inputFocus();
   searchInput.value = "";
 };

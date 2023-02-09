@@ -1,8 +1,6 @@
-console.log("search");
 import { catchError, showAllData } from "./data.js";
-import { inputFocus, searchInput } from "./script.js";
-import { toggleImage } from "./toggleImage.js";
-
+import { inputFocus } from "./script.js";
+console.log("search");
 // //*FETCH THE DATA BASED ON INPUT SEARCH AND INPUT VALIDATION and DISPLAY ALL THE RESULTS
 
 export const searchBreed = async (searchInput, notification, resultDataUl) => {
@@ -30,7 +28,7 @@ export const showSearchResults = function (
       notification.classList.add("notification");
       notification.textContent = "Nothing found. Please try again";
       resultDataUl.append(notification);
-      inputFocus(searchInput);
+      inputFocus();
     } else {
       for (let i = 0; i < resolve.length; i++) {
         const newLi = document.createElement("li");
@@ -43,7 +41,7 @@ export const showSearchResults = function (
           resolve[i].reference_image_id
         }.jpg" alt="Image of the ${resolve[i].name}">`;
         resultDataUl.append(newLi);
-        inputFocus(searchInput);
+        inputFocus();
       }
     }
   });
@@ -62,7 +60,7 @@ export const inputValidation = function (
     searchInput.value[0] <= 9
   ) {
     searchInput.value = "";
-    inputFocus(searchInput);
+    inputFocus();
     showAllData(resultFetchBreed, resultDataUl, newLi);
   } else {
     showSearchResults(searchInput, notification, resultDataUl);

@@ -3,7 +3,6 @@
 import { fetchBreedData, showAllData, clearData } from "./data.js";
 import { toggleImage } from "./toggleImage.js";
 import { inputValidation } from "./search.js";
-
 console.log("script");
 //*SELECTING ELEMENTS
 export const resultDataUl = document.querySelector("ul");
@@ -14,7 +13,7 @@ const clearButton = document.querySelector(".search__button-clear-all");
 const newLi = document.querySelector("li");
 
 //*FOCUS ON SEARCH INPUT
-export const inputFocus = function (searchInput) {
+export const inputFocus = function () {
   searchInput.focus();
 };
 
@@ -52,7 +51,6 @@ searchButton.addEventListener("click", function () {
     resultDataUl,
     newLi
   );
-  // showSearchResults(notification, resultDataUl, newLi);
 });
 
 //*TRIGGER SEARCH BUTTON CLICK ON THE ENTER KEYDOWN EVENT IN SEARCH INPUT
