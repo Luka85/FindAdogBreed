@@ -29,7 +29,6 @@ export const showAllData = function (resultFetchBreed, resultDataUl, newLi) {
   resultDataUl.innerHTML = "";
   if (resultFetchBreed === undefined) {
   } else {
-    addDataToHtml(resultFetchBreed, newLi, resultDataUl);
     for (let i = 0; i < resultFetchBreed.length; i++) {
       newLi = document.createElement("li");
       newLi.classList.add("result");
