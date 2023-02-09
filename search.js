@@ -1,4 +1,4 @@
-import { catchError, showAllData } from "./data.js";
+import { catchError, showAllData, addDataToHtml } from "./data.js";
 import { inputFocus } from "./script.js";
 console.log("search");
 // //*FETCH THE DATA BASED ON INPUT SEARCH AND INPUT VALIDATION and DISPLAY ALL THE RESULTS
@@ -30,19 +30,7 @@ export const showSearchResults = function (
       resultDataUl.append(notification);
       inputFocus();
     } else {
-      for (let i = 0; i < resolve.length; i++) {
-        const newLi = document.createElement("li");
-        newLi.classList.add("result");
-        newLi.innerHTML = `<div class="result__num">${
-          i + 1
-        }</div><div class ="result__breedLink">${
-          resolve[i].name
-        }</div><img class="hidden" src="https://cdn2.thedogapi.com/images/${
-          resolve[i].reference_image_id
-        }.jpg" alt="Image of the ${resolve[i].name}">`;
-        resultDataUl.append(newLi);
-        inputFocus();
-      }
+      addDataToHtml(resolve, newLi, resultDataUl);
     }
   });
 };

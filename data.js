@@ -29,23 +29,26 @@ export const showAllData = function (resultFetchBreed, resultDataUl, newLi) {
   resultDataUl.innerHTML = "";
   if (resultFetchBreed === undefined) {
   } else {
-    for (let i = 0; i < resultFetchBreed.length; i++) {
-      newLi = document.createElement("li");
-      newLi.classList.add("result");
-      newLi.innerHTML = `<div class="result__num">${
-        i + 1
-      }</div><div class ="result__breedLink">${
-        resultFetchBreed[i].name
-      }</div><img class="hidden" src="${
-        resultFetchBreed[i].image.url
-      }" alt="Image of the ${resultFetchBreed[i].name}">`;
-
-      resultDataUl.append(newLi);
-    }
+    addDataToHtml(resultFetchBreed, newLi, resultDataUl);
   }
 };
 
 export const clearData = function (searchInput) {
   inputFocus();
   searchInput.value = "";
+};
+
+export const addDataToHtml = function (fetchResults, newLi, resultDataUl) {
+  for (let i = 0; i < fetchResults.length; i++) {
+    newLi = document.createElement("li");
+    newLi.classList.add("result");
+    newLi.innerHTML = `<div class="result__num">${
+      i + 1
+    }</div><div class ="result__breedLink">${
+      fetchResults[i].name
+    }</div><img class="hidden" src="${
+      fetchResults[i].image.url
+    }" alt="Image of the ${fetchResults[i].name}">`;
+    resultDataUl.append(newLi);
+  }
 };
