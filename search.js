@@ -1,6 +1,6 @@
 import { catchError, showAllData } from "./data.js";
 import { inputFocus } from "./script.js";
-
+console.log("search");
 // //*FETCH THE DATA BASED ON INPUT SEARCH AND INPUT VALIDATION and DISPLAY ALL THE RESULTS
 
 export const searchBreed = async (searchInput, notification, resultDataUl) => {
