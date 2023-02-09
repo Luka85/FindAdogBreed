@@ -39,6 +39,7 @@ export const showAllData = function (resultFetchBreed, resultDataUl, newLi) {
       }</div><img class="hidden" src="${
         resultFetchBreed[i].image.url
       }" alt="Image of the ${resultFetchBreed[i].name}">`;
+
       resultDataUl.append(newLi);
     }
   }
