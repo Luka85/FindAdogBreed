@@ -1,4 +1,4 @@
-import { catchError, showAllData } from "./data.js";
+import { catchError, showAllData, addDataToHtml } from "./data.js";
 import { inputFocus } from "./script.js";
 console.log("search");
 // //*FETCH THE DATA BASED ON INPUT SEARCH AND INPUT VALIDATION and DISPLAY ALL THE RESULTS
@@ -10,7 +10,7 @@ export const searchBreed = async (searchInput, notification, resultDataUl) => {
     );
     return resolve.data;
   } catch (error) {
-    catchError(resultDataUl, notification, inputFocus);
+    catchError(resultDataUl, notification);
     console.log(error);
   }
 };
@@ -21,7 +21,6 @@ export const showSearchResults = function (
   resultDataUl
 ) {
   searchBreed(searchInput, notification, resultDataUl).then((resolve) => {
-    console.log(resolve);
     resultDataUl.innerHTML = "";
     if (resolve.length === 0) {
       notification = document.createElement("li");
@@ -30,19 +29,7 @@ export const showSearchResults = function (
       resultDataUl.append(notification);
       inputFocus();
     } else {
-      for (let i = 0; i < resolve.length; i++) {
-        const newLi = document.createElement("li");
-        newLi.classList.add("result");
-        newLi.innerHTML = `<div class="result__num">${
-          i + 1
-        }</div><div class ="result__breedLink">${
-          resolve[i].name
-        }</div><img class="hidden" src="https://cdn2.thedogapi.com/images/${
-          resolve[i].reference_image_id
-        }.jpg" alt="Image of the ${resolve[i].name}">`;
-        resultDataUl.append(newLi);
-        inputFocus();
-      }
+      return addDataToHtml(resolve);
     }
   });
 };
@@ -51,8 +38,7 @@ export const inputValidation = function (
   searchInput,
   resultFetchBreed,
   notification,
-  resultDataUl,
-  newLi
+  resultDataUl
 ) {
   if (
     searchInput.value.length === 0 ||
@@ -61,7 +47,7 @@ export const inputValidation = function (
   ) {
     searchInput.value = "";
     inputFocus();
-    showAllData(resultFetchBreed, resultDataUl, newLi);
+    showAllData(resultFetchBreed, resultDataUl);
   } else {
     showSearchResults(searchInput, notification, resultDataUl);
   }
