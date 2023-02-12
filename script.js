@@ -10,14 +10,14 @@ export const searchInput = document.querySelector(".search__input");
 export const notification = document.querySelector(".notification");
 const searchButton = document.querySelector(".search__button");
 const clearButton = document.querySelector(".search__button-clear-all");
-const newLi = document.querySelector("li");
+// const newLi = document.querySelector("li");
 
 //*FOCUS ON SEARCH INPUT
 export const inputFocus = function () {
   searchInput.focus();
 };
 
-inputFocus(searchInput);
+inputFocus();
 
 export const resultFetchBreed = await fetchBreedData(
   resultDataUl,
@@ -31,10 +31,7 @@ window.addEventListener(
 );
 
 //*ON WINDOW LOAD DISPLAY ALL THE DATA FROM THE showAllData FUNCTION
-window.addEventListener(
-  "load",
-  showAllData(resultFetchBreed, resultDataUl, newLi)
-);
+window.addEventListener("load", showAllData(resultFetchBreed, resultDataUl));
 
 //*ON ul (closest li) CLICK EVENT TOGGLE IMAGES
 const allLi = document.querySelectorAll(".result");
@@ -44,25 +41,13 @@ resultDataUl.addEventListener("click", function (e) {
 });
 
 searchButton.addEventListener("click", function () {
-  inputValidation(
-    searchInput,
-    resultFetchBreed,
-    notification,
-    resultDataUl,
-    newLi
-  );
+  inputValidation(searchInput, resultFetchBreed, notification, resultDataUl);
 });
 
 //*TRIGGER SEARCH BUTTON CLICK ON THE ENTER KEYDOWN EVENT IN SEARCH INPUT
 searchInput.addEventListener("keydown", function (event) {
   if (event.key === "Enter") {
-    inputValidation(
-      searchInput,
-      resultFetchBreed,
-      notification,
-      resultDataUl,
-      newLi
-    );
+    inputValidation(searchInput, resultFetchBreed, notification, resultDataUl);
   }
 });
 
