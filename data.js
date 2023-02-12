@@ -6,6 +6,7 @@ export const fetchBreedData = async (resultDataUl, notification) => {
     const resolve = await axios.get(`https://api.thedogapi.com/v1/breeds/`);
     return resolve.data;
   } catch (error) {
+    const resultDataUl = document.querySelector("ul");
     return catchError(resultDataUl, notification);
   }
 };
