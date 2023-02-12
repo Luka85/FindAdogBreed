@@ -1,4 +1,4 @@
-import { inputFocus } from "./script.js";
+import { inputFocus, resultDataUl } from "./script.js";
 console.log("data");
 //*FETCH THE BREED DATA FROM THE API
 export const fetchBreedData = async (resultDataUl, notification) => {
@@ -6,7 +6,6 @@ export const fetchBreedData = async (resultDataUl, notification) => {
     const resolve = await axios.get(`https://api.thedogapi.com/v1/breeds/`);
     return resolve.data;
   } catch (error) {
-    const resultDataUl = document.querySelector("ul");
     return catchError(resultDataUl, notification);
   }
 };
@@ -25,7 +24,7 @@ export const catchError = function (resultDataUl, notification) {
 export const showAllData = function (resultFetchBreed, resultDataUl) {
   resultDataUl.innerHTML = "";
   if (resultFetchBreed === undefined) {
-    console.log(`resultFetchBreed is undefined`);
+    console.log(`${resultFetchBreed} is undefined`);
   } else {
     return addDataToHtml(resultFetchBreed);
   }
