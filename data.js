@@ -3,7 +3,7 @@ console.log("data");
 //*FETCH THE BREED DATA FROM THE API
 export const fetchBreedData = async (resultDataUl, notification) => {
   try {
-    const resolve = await axios.get(`https://api.thedogapi.com/v1/breeds1/`);
+    const resolve = await axios.get(`https://api.thedogapi.com/v1/breeds/`);
     return resolve.data;
   } catch (error) {
     const resultDataUl = document.querySelector("ul");
