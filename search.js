@@ -16,7 +16,6 @@ export const searchBreed = async (searchInput) => {
 
 export const showSearchResults = async function () {
   const resultSearchBreed = await searchBreed(searchInput);
-  console.log(resultSearchBreed);
   const resultDataUl = document.querySelector("ul");
   resultDataUl.innerHTML = "";
   if (resultSearchBreed.length === 0) {

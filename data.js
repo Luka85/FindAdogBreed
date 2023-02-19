@@ -27,7 +27,7 @@ export const catchError = function () {
 export const showAllData = function (resultFetchBreed) {
   const resultDataUl = document.querySelector("ul");
   resultDataUl.innerHTML = "";
-  // console.log(addDataToHtml(resultFetchBreed));
+
   const result = addDataToHtml(resultFetchBreed);
   for (let i = 0; i < result.length; i++) {
     resultDataUl.appendChild(result[i]);

@@ -2,7 +2,7 @@
 
 import { fetchBreedData, showAllData, clearData } from "./data.js";
 import { toggleImage } from "./toggleImage.js";
-import { inputValidation, showSearchResults } from "./search.js";
+import { inputValidation } from "./search.js";
 console.log("script");
 //*SELECTING ELEMENTS
 export const resultDataUl = document.querySelector("ul");
@@ -10,7 +10,6 @@ export const searchInput = document.querySelector(".search__input");
 export const notification = document.querySelector(".notification");
 const searchButton = document.querySelector(".search__button");
 const clearButton = document.querySelector(".search__button-clear-all");
-// const newLi = document.querySelector("li");
 
 //*FOCUS ON SEARCH INPUT
 export const inputFocus = function () {
