@@ -135,6 +135,9 @@ body {
 .clear__icon {
   color: var(--color-primary);
 }
+.result-content {
+  margin-bottom: 3rem;
+}
 
 .result__heading {
   display: flex;
@@ -220,4 +223,28 @@ li:hover {
   border: 0.6rem solid var(--color-button);
   box-shadow: 0px 0px 20px 0px rgba(18, 43, 59, 0.932);
   justify-items: flex-start;
+}
+
+.navigation-content {
+  text-align: center;
+}
+.navigation-button {
+  color: inherit;
+  font-size: 1.3rem;
+  font-family: inherit;
+  font-weight: 400;
+  background-color: #2d89d42c;
+  padding: 0.6rem 2rem;
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+}
+
+.navigation-button:nth-of-type(1),
+.navigation-button:nth-of-type(3) {
+  margin-right: 0.7rem;
+}
+.navigation__current {
+  margin: 0 1rem;
+  font-size: 1.3rem;
 }
