@@ -61,14 +61,14 @@ body {
   display: flex;
   flex: 90%;
   justify-content: space-between;
-  margin-right: 1rem;
+  margin-right: 3rem;
 }
 
 .search__input {
   font-family: inherit;
   font-size: 1.3rem;
   font-weight: 300;
-  border-radius: 0.5rem;
+  border-radius: 0.5rem 0 0 0.5rem;
   border: none;
   width: 100%;
   padding: 1rem 1.3rem 0.8rem 1rem;
@@ -89,7 +89,7 @@ body {
 
 .search__button {
   position: relative;
-  left: -3rem;
+  /* left: -3rem; */
   font-size: 1.5rem;
   background-color: var(--color-button);
   padding: 0 2rem;
