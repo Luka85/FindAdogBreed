@@ -31,13 +31,13 @@ resultDataUl.addEventListener("click", function (e) {
 });
 
 searchButton.addEventListener("click", function () {
-  inputValidation(searchInput, resultFetchBreed);
+  inputValidation(resultFetchBreed);
 });
 
 //*TRIGGER SEARCH BUTTON CLICK ON THE ENTER KEYDOWN EVENT IN SEARCH INPUT
 searchInput.addEventListener("keydown", function (event) {
   if (event.key === "Enter") {
-    inputValidation(searchInput, resultFetchBreed);
+    inputValidation(resultFetchBreed);
   }
 });
 
