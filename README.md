@@ -1,2 +1,4 @@
 # FindAdogBreed
-Get the data from the api and show the search result
+- The app shows all dog breeds
+- User can search for a specific breed
+- User can toggle breed images
