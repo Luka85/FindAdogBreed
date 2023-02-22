@@ -6,7 +6,7 @@ const searchInput = document.querySelector(".search__input");
 export const searchBreed = async (searchInput) => {
   try {
     const resolve = await axios.get(
-      `https://api.thedogapi.com/v1/breeds/search?q=${searchInput.value}`
+      `https://api.thedogapi.com/v1/breeds?limit=10&page=0/search?q=${searchInput.value}`
     );
     return resolve.data;
   } catch (error) {

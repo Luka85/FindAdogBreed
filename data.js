@@ -3,7 +3,9 @@ console.log("data");
 //*FETCH THE BREED DATA FROM THE API
 export const fetchBreedData = async () => {
   try {
-    const resolve = await axios.get(`https://api.thedogapi.com/v1/breeds/`);
+    const resolve = await axios.get(
+      `https://api.thedogapi.com/v1/breeds?limit=10&page=0/`
+    );
     // console.log(resolve);
 
     return resolve.data;
