@@ -1,5 +1,5 @@
 "use strict";
-
+import { store } from "./store.js";
 import { fetchBreedData, showAllData, clearData } from "./data.js";
 import { toggleImage } from "./toggleImage.js";
 import { inputValidation } from "./search.js";
