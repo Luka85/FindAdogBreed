@@ -2,5 +2,7 @@ export const store = {
   state: {
     breedData: {},
   },
-  setBreeds() {},
+  setBreeds(breedsData) {
+    this.state.breedData = breedsData;
+  },
 };

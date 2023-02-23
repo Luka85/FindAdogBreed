@@ -1,4 +1,5 @@
 import { inputFocus } from "./script.js";
+import "./store.js";
 console.log("data");
 //*FETCH THE BREED DATA FROM THE API
 export const fetchBreedData = async () => {
@@ -6,9 +7,8 @@ export const fetchBreedData = async () => {
     const resolve = await axios.get(
       `https://api.thedogapi.com/v1/breeds?limit=10&page=0/`
     );
-    // console.log(resolve);
 
-    return resolve.data;
+    store.setBreeds(resolve.data);
   } catch (error) {
     throw catchError();
   }
