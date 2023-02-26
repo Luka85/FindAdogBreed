@@ -1,4 +1,5 @@
 import { catchError, showAllData, addDataToHtml } from "./data.js";
+import { store } from "./store.js";
 import { inputFocus } from "./script.js";
 console.log("search");
 // //*FETCH THE DATA BASED ON INPUT SEARCH AND INPUT VALIDATION and DISPLAY ALL THE RESULTS
@@ -6,9 +7,11 @@ const searchInput = document.querySelector(".search__input");
 export const searchBreed = async (searchInput) => {
   try {
     const resolve = await axios.get(
-      `https://api.thedogapi.com/v1/breeds?limit=10&page=0/search?q=${searchInput.value}`
+      `https://api.thedogapi.com/v1/breeds/search?q=${searchInput.value}`
     );
-    return resolve.data;
+
+    store.setBreeds(resolve.data);
+    return store.getBreeds();
   } catch (error) {
     throw catchError();
   }
@@ -16,6 +19,7 @@ export const searchBreed = async (searchInput) => {
 
 export const showSearchResults = async function () {
   const resultSearchBreed = await searchBreed(searchInput);
+  console.log(resultSearchBreed);
   const resultDataUl = document.querySelector("ul");
   resultDataUl.innerHTML = "";
   if (resultSearchBreed.length === 0) {

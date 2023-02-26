@@ -5,4 +5,7 @@ export const store = {
   setBreeds(breedsData) {
     this.state.breedData = breedsData;
   },
+  getBreeds() {
+    return this.state.breedData;
+  },
 };

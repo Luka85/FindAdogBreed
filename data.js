@@ -1,5 +1,5 @@
 import { inputFocus } from "./script.js";
-import "./store.js";
+import { store } from "./store.js";
 console.log("data");
 //*FETCH THE BREED DATA FROM THE API
 export const fetchBreedData = async () => {
@@ -7,8 +7,8 @@ export const fetchBreedData = async () => {
     const resolve = await axios.get(
       `https://api.thedogapi.com/v1/breeds?limit=10&page=0/`
     );
-
     store.setBreeds(resolve.data);
+    return store.getBreeds();
   } catch (error) {
     throw catchError();
   }
@@ -38,6 +38,7 @@ export const showAllData = function (resultFetchBreed) {
 
 export const addDataToHtml = function (resultFetchBreed) {
   const listBreedsArray = [];
+  store.setBreeds(resultFetchBreed);
   for (let i = 0; i < resultFetchBreed.length; i++) {
     const newLi = document.createElement("li");
     newLi.classList.add("result");
