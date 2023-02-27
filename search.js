@@ -9,17 +9,15 @@ export const searchBreed = async (searchInput) => {
     const resolve = await axios.get(
       `https://api.thedogapi.com/v1/breeds/search?q=${searchInput.value}`
     );
-
     store.setBreeds(resolve.data);
-    return store.getBreeds();
   } catch (error) {
     throw catchError();
   }
 };
 
 export const showSearchResults = async function () {
-  const resultSearchBreed = await searchBreed(searchInput);
-  console.log(resultSearchBreed);
+  await searchBreed(searchInput);
+  const resultSearchBreed = store.getBreeds();
   const resultDataUl = document.querySelector("ul");
   resultDataUl.innerHTML = "";
   if (resultSearchBreed.length === 0) {
@@ -36,7 +34,7 @@ export const showSearchResults = async function () {
   }
 };
 
-export const inputValidation = function (resultFetchBreed) {
+export const inputValidation = function () {
   const searchInput = document.querySelector(".search__input");
   if (
     searchInput.value.length === 0 ||
@@ -45,7 +43,7 @@ export const inputValidation = function (resultFetchBreed) {
   ) {
     searchInput.value = "";
     inputFocus();
-    showAllData(resultFetchBreed);
+    showAllData();
   } else {
     showSearchResults();
   }

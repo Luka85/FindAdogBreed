@@ -18,10 +18,9 @@ export const inputFocus = function () {
 
 inputFocus();
 
-const resultFetchBreed = await fetchBreedData();
-
 //*ON WINDOW LOAD DISPLAY ALL THE DATA FROM THE showAllData FUNCTION
-window.addEventListener("load", showAllData(resultFetchBreed));
+
+window.addEventListener("load", showAllData());
 
 //*ON ul (closest li) CLICK EVENT TOGGLE IMAGES
 
@@ -31,17 +30,17 @@ resultDataUl.addEventListener("click", function (e) {
 });
 
 searchButton.addEventListener("click", function () {
-  inputValidation(resultFetchBreed);
+  inputValidation();
 });
 
 //*TRIGGER SEARCH BUTTON CLICK ON THE ENTER KEYDOWN EVENT IN SEARCH INPUT
 searchInput.addEventListener("keydown", function (event) {
   if (event.key === "Enter") {
-    inputValidation(resultFetchBreed);
+    inputValidation();
   }
 });
 
 clearButton.addEventListener("click", function () {
   clearData(searchInput, inputFocus);
-  showAllData(resultFetchBreed, resultDataUl);
+  showAllData();
 });
